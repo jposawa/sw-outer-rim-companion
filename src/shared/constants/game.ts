@@ -13,8 +13,8 @@ export enum Module {
 export enum ShipModuleType {
 	Modification = "Modification",
 	Cargo = "Cargo",
-	Crew = "Crew",
 	Mix = "Cargo/Modification",
+	Crew = "Crew",
 }
 
 export const GAME_SETTINGS = {

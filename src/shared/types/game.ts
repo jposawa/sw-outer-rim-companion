@@ -7,10 +7,10 @@ export type Contact = {
 };
 
 export type Ability = {
-  description: string;
+	description: string;
 	modifier: Modifier;
 	id?: string;
-  name?: string;
+	name?: string;
 };
 
 export type Reward = {
@@ -55,7 +55,7 @@ export type Modifier = {
 	character: {
 		attack: number;
 		armor: number;
-    reputation?: Record<Faction, number> | "choose";
+		reputation?: Record<Faction, number> | "choose";
 	};
 	ship: {
 		attack: number;
@@ -71,6 +71,7 @@ export type Asset = {
 	cost: number;
 	type: AssetType;
 	modifier: Modifier;
+	ability: Ability;
 };
 
 export type ShipModule = {
@@ -88,11 +89,14 @@ export type Ship = {
 	speed: number;
 	attack: number;
 	armor: number;
-  damage: number;
+	damage: number;
 	objective: string;
 	objectiveAchieved: boolean;
-  constraint: Record<ShipModuleType, number>;
-	ability?: Ability[];
+	constraint: {
+		base: Record<ShipModuleType, number>;
+		advanced: Record<ShipModuleType, number>;
+	};
+	ability: Ability;
 };
 
 export type Character = {
@@ -102,7 +106,7 @@ export type Character = {
 	missions: Array<Job | Bounty>[];
 	attack: number;
 	armor: number;
-  damage: number;
+	damage: number;
 	fame: number;
 	reputation: Record<Faction, number>;
 	credits: number;
