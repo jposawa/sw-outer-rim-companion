@@ -1,441 +1,446 @@
 import { Character, Ship } from "../types";
 import { Faction, Module, ShipModuleType, Skill } from "./game";
 
-export const SHIPS: Record<string, Ship> = {
-	ship_1: {
-		id: "ship_1",
-		name: "G-1A Starfighter",
-		cost: 0,
-		crew: [],
-		modules: [],
-		speed: 5,
-		attack: 3,
-		armor: 4,
-		damage: 0,
-		objectiveAchieved: false,
-		constraint: {
-			base: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Crew]: 1,
-				[ShipModuleType.Mix]: 0,
+export const SHIPS: Record<Module, Record<string, Ship>> = {
+	[Module.Core]: {
+		ship_1: {
+			id: "ship_1",
+			name: "G-1A Starfighter",
+			cost: 0,
+			crew: [],
+			modules: [],
+			speed: 5,
+			attack: 3,
+			armor: 4,
+			damage: 0,
+			objectiveAchieved: false,
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Crew]: 1,
+					[ShipModuleType.Mix]: 0,
+				},
+				advanced: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Crew]: 1,
+					[ShipModuleType.Mix]: 0,
+				},
 			},
-			advanced: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Crew]: 1,
-				[ShipModuleType.Mix]: 0,
+			objective: "STARTING SHIP",
+			ability: {
+				description: "",
+				modifier: {
+					character: {
+						attack: 0,
+						armor: 0,
+						reputation: undefined,
+					},
+					ship: {
+						attack: 0,
+						armor: 0,
+						speed: 0,
+					},
+				},
 			},
 		},
-		objective: "STARTING SHIP",
-		ability: {
-			description: "",
-			modifier: {
-				character: {
-					attack: 0,
-					armor: 0,
-					reputation: undefined,
+		ship_2: {
+			id: "ship_2",
+			name: "G9 Rigger",
+			cost: 0,
+			crew: [],
+			modules: [],
+			speed: 6,
+			attack: 2,
+			armor: 3,
+			damage: 0,
+			objectiveAchieved: false,
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Crew]: 1,
+					[ShipModuleType.Mix]: 0,
 				},
-				ship: {
-					attack: 0,
-					armor: 0,
-					speed: 0,
+				advanced: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Crew]: 1,
+					[ShipModuleType.Mix]: 0,
 				},
+			},
+			objective: "STARTING SHIP",
+			ability: {
+				description: "",
+				modifier: {
+					character: {
+						attack: 0,
+						armor: 0,
+						reputation: undefined,
+					},
+					ship: {
+						attack: 0,
+						armor: 0,
+						speed: 0,
+					},
+				},
+			},
+		},
+		ship_3: {
+			id: "ship_3",
+			name: "Firespray-31 Patrolship",
+			cost: 20000,
+			crew: [],
+			modules: [],
+			speed: 6,
+			attack: 5,
+			armor: 6,
+			damage: 0,
+			objective:
+				"<strong>Encounter: </strong> Start a ship combat against a Player on your space that has more fame than you.",
+			objectiveAchieved: false,
+			ability: {
+				name: "Stealth Device",
+				description: `When you move into a Patrol space, you can make a ${Skill.Stealth} check. If you pass, you don't need to finish your movement on this space.`,
+				modifier: {
+					character: {
+						attack: 0,
+						armor: 0,
+						reputation: undefined,
+					},
+					ship: {
+						attack: 0,
+						armor: 0,
+						speed: 0,
+					},
+				},
+			},
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 2,
+				},
+				advanced: {
+					[ShipModuleType.Modification]: 2,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 2,
+				},
+			},
+		},
+		ship_4: {
+			id: "ship_4",
+			name: "Aggressor assault ship",
+			cost: 15000,
+			crew: [],
+			modules: [],
+			speed: 6,
+			attack: 5,
+			armor: 5,
+			damage: 0,
+			objective: "Win 2 combats against Patrol.",
+			objectiveAchieved: false,
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 2,
+				},
+				advanced: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 3,
+				},
+			},
+			ability: {
+				name: "Long range Ion cannon",
+				description:
+					"When you win a combat against Patrol, don't loose Reputation with its faction.",
+				modifier: {
+					character: {
+						attack: 0,
+						armor: 0,
+					},
+					ship: {
+						attack: 0,
+						armor: 0,
+						speed: 0,
+					},
+				},
+				id: undefined,
+			},
+		},
+		ship_5: {
+			id: "ship_5",
+			name: "HWK-290 Freighter",
+			cost: 5000,
+			crew: [],
+			modules: [],
+			speed: 6,
+			attack: 3,
+			armor: 4,
+			damage: 0,
+			objective:
+				"<strong>Action: </strong>If you have a modification, spend [[Credits]]7000",
+			objectiveAchieved: false,
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 0,
+					[ShipModuleType.Crew]: 2,
+				},
+				advanced: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 2,
+					[ShipModuleType.Mix]: 0,
+					[ShipModuleType.Crew]: 2,
+				},
+			},
+			ability: {
+				description: "Gain +1 [[PersonalWeapon]]",
+				modifier: {
+					character: {
+						attack: 1,
+						armor: 0,
+					},
+					ship: {
+						attack: 0,
+						armor: 0,
+						speed: 0,
+					},
+				},
+				name: "Anti Personal blaster turret",
+			},
+		},
+		ship_6: {
+			id: "ship_6",
+			name: "GX1 Light Freighter",
+			cost: 5000,
+			crew: [],
+			modules: [],
+			speed: 6,
+			attack: 2,
+			armor: 5,
+			damage: 0,
+			objective: "Get a Crew member while having 2 Crew. (Keep all 3 crew)",
+			objectiveAchieved: false,
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 0,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 2,
+				},
+				advanced: {
+					[ShipModuleType.Modification]: 0,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 3,
+				},
+			},
+			ability: {
+				description:
+					"During <b>Encounter</b> phase, you aren't required to face patrols with [[Negative]] reputation.",
+				modifier: {
+					character: {
+						attack: 0,
+						armor: 0,
+						reputation: undefined,
+					},
+					ship: {
+						attack: 0,
+						armor: 0,
+						speed: 0,
+					},
+				},
+				name: "Diplomatic Mission",
+			},
+		},
+		ship_7: {
+			id: "ship_7",
+			name: "Heavy Hauler",
+			cost: 10000,
+			crew: [],
+			modules: [],
+			speed: 6,
+			attack: 3,
+			armor: 5,
+			damage: 0,
+			objective: "If you have at least 1 Cargo, complete a job.",
+			objectiveAchieved: false,
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 0,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 3,
+				},
+				advanced: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 2,
+					[ShipModuleType.Mix]: 0,
+					[ShipModuleType.Crew]: 3,
+				},
+			},
+			ability: {
+				description: "Gain +1 [[Speed]] for each Job you have",
+				modifier: {
+					character: {
+						attack: 0,
+						armor: 0,
+						reputation: undefined,
+					},
+					ship: {
+						attack: 0,
+						armor: 0,
+						speed: 0,
+					},
+				},
+				name: "Secret Mission",
+			},
+		},
+		ship_8: {
+			id: "ship_8",
+			name: "YT-1300 modded Light Freighter",
+			cost: 20000,
+			crew: [],
+			modules: [],
+			speed: 7,
+			attack: 4,
+			armor: 5,
+			damage: 0,
+			objective:
+				'If you have 2 mods or 1 mod and the "Chewbacca" crew, deliver 1 cargo.',
+			objectiveAchieved: false,
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 3,
+				},
+				advanced: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 3,
+				},
+			},
+			ability: {
+				description:
+					"When you roll a die to deliver a <b>Illegal</b> cargo, you can switch a [[Focus]] or [[Critical]] to [[Hit]]",
+				modifier: {
+					character: {
+						attack: 0,
+						armor: 0,
+						reputation: undefined,
+					},
+					ship: {
+						attack: 1,
+						armor: 0,
+						speed: 0,
+					},
+				},
+				name: "Special Modifications",
+			},
+		},
+		ship_9: {
+			id: "ship_9",
+			name: "Lancer pursuing ship",
+			cost: 10000,
+			crew: [],
+			modules: [],
+			speed: 6,
+			attack: 4,
+			armor: 5,
+			damage: 0,
+			objective: "Deliver a Contact from your Bounties",
+			objectiveAchieved: false,
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 0,
+					[ShipModuleType.Crew]: 2,
+				},
+				advanced: {
+					[ShipModuleType.Modification]: 1,
+					[ShipModuleType.Cargo]: 1,
+					[ShipModuleType.Mix]: 0,
+					[ShipModuleType.Crew]: 3,
+				},
+			},
+			ability: {
+				description:
+					"When other player moves to your space, you can make them to stop the movement.",
+				modifier: {
+					character: {
+						attack: 0,
+						armor: 0,
+						reputation: undefined,
+					},
+					ship: {
+						attack: 0,
+						armor: 0,
+						speed: 0,
+					},
+				},
+				name: "Tractor Beam",
+			},
+		},
+		ship_10: {
+			id: "ship_10",
+			name: "YV-666 Light Freighter",
+			cost: 15000,
+			crew: [],
+			modules: [],
+			speed: 7,
+			attack: 3,
+			armor: 5,
+			damage: 0,
+			objective:
+				"When you recover at least 1 damage from this ship, spend [[Credits]] 7000.",
+			objectiveAchieved: false,
+			constraint: {
+				base: {
+					[ShipModuleType.Modification]: 0,
+					[ShipModuleType.Cargo]: 2,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 3,
+				},
+				advanced: {
+					[ShipModuleType.Modification]: 0,
+					[ShipModuleType.Cargo]: 2,
+					[ShipModuleType.Mix]: 1,
+					[ShipModuleType.Crew]: 3,
+				},
+			},
+			ability: {
+				description:
+					"When you are going to be defeated during a ship combat, roll a die. On a [[Focus]] or [[Hit]] you recover 2 ship damage instead.",
+				modifier: {
+					character: {
+						attack: 0,
+						armor: 0,
+						reputation: undefined,
+					},
+					ship: {
+						attack: 1,
+						armor: 0,
+						speed: 0,
+					},
+				},
+				name: "Nashtah Pup",
 			},
 		},
 	},
-	ship_2: {
-		id: "ship_2",
-		name: "G9 Rigger",
-		cost: 0,
-		crew: [],
-		modules: [],
-		speed: 6,
-		attack: 2,
-		armor: 3,
-		damage: 0,
-		objectiveAchieved: false,
-		constraint: {
-			base: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Crew]: 1,
-				[ShipModuleType.Mix]: 0,
-			},
-			advanced: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Crew]: 1,
-				[ShipModuleType.Mix]: 0,
-			},
-		},
-		objective: "STARTING SHIP",
-		ability: {
-			description: "",
-			modifier: {
-				character: {
-					attack: 0,
-					armor: 0,
-					reputation: undefined,
-				},
-				ship: {
-					attack: 0,
-					armor: 0,
-					speed: 0,
-				},
-			},
-		},
-	},
-	ship_3: {
-		id: "ship_3",
-		name: "Firespray-31 Patrolship",
-		cost: 20000,
-		crew: [],
-		modules: [],
-		speed: 6,
-		attack: 5,
-		armor: 6,
-		damage: 0,
-		objective:
-			"<strong>Encounter: </strong> Start a ship combat against a Player on your space that has more fame than you.",
-		objectiveAchieved: false,
-		ability: {
-			name: "Stealth Device",
-			description: `When you move into a Patrol space, you can make a ${Skill.Stealth} check. If you pass, you don't need to finish your movement on this space.`,
-			modifier: {
-				character: {
-					attack: 0,
-					armor: 0,
-					reputation: undefined,
-				},
-				ship: {
-					attack: 0,
-					armor: 0,
-					speed: 0,
-				},
-			},
-		},
-		constraint: {
-			base: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 1,
-				[ShipModuleType.Crew]: 2,
-			},
-			advanced: {
-				[ShipModuleType.Modification]: 2,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 1,
-				[ShipModuleType.Crew]: 2,
-			},
-		},
-	},
-	ship_4: {
-		id: "ship_4",
-		name: "Aggressor assault ship",
-		cost: 15000,
-		crew: [],
-		modules: [],
-		speed: 6,
-		attack: 5,
-		armor: 5,
-		damage: 0,
-		objective: "Win 2 combats against Patrol.",
-		objectiveAchieved: false,
-		constraint: {
-			base: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 1,
-				[ShipModuleType.Crew]: 2,
-			},
-			advanced: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 1,
-				[ShipModuleType.Crew]: 3,
-			},
-		},
-		ability: {
-			name: "Long range Ion cannon",
-			description:
-				"When you win a combat against Patrol, don't loose Reputation with its faction.",
-			modifier: {
-				character: {
-					attack: 0,
-					armor: 0,
-				},
-				ship: {
-					attack: 0,
-					armor: 0,
-					speed: 0,
-				},
-			},
-			id: undefined,
-		},
-	},
-	ship_5: {
-		id: "ship_5",
-		name: "HWK-290 Freighter",
-		cost: 5000,
-		crew: [],
-		modules: [],
-		speed: 6,
-		attack: 3,
-		armor: 4,
-		damage: 0,
-		objective:
-			"<strong>Action: </strong>If you have a modification, spend [[Credits]]7000",
-		objectiveAchieved: false,
-		constraint: {
-			base: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 0,
-				[ShipModuleType.Crew]: 2,
-			},
-			advanced: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 2,
-				[ShipModuleType.Mix]: 0,
-				[ShipModuleType.Crew]: 2,
-			},
-		},
-		ability: {
-			description: "Gain +1 [[PersonalWeapon]]",
-			modifier: {
-				character: {
-					attack: 1,
-					armor: 0,
-				},
-				ship: {
-					attack: 0,
-					armor: 0,
-					speed: 0,
-				},
-			},
-			name: "Anti Personal blaster turret",
-		},
-	},
-	ship_6: {
-		id: "ship_6",
-		name: "GX1 Light Freighter",
-		cost: 5000,
-		crew: [],
-		modules: [],
-		speed: 6,
-		attack: 2,
-		armor: 5,
-		damage: 0,
-		objective: "Get a Crew member while having 2 Crew. (Keep all 3 crew)",
-		objectiveAchieved: false,
-		constraint: {
-			base: {
-				[ShipModuleType.Modification]: 0,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 1,
-				[ShipModuleType.Crew]: 2,
-			},
-			advanced: {
-				[ShipModuleType.Modification]: 0,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 1,
-				[ShipModuleType.Crew]: 3,
-			},
-		},
-		ability: {
-			description:
-				"During <b>Encounter</b> phase, you aren't required to face patrols with [[Negative]] reputation.",
-			modifier: {
-				character: {
-					attack: 0,
-					armor: 0,
-					reputation: undefined,
-				},
-				ship: {
-					attack: 0,
-					armor: 0,
-					speed: 0,
-				},
-			},
-			name: "Diplomatic Mission",
-		},
-	},
-	ship_7: {
-		id: "ship_7",
-		name: "Heavy Hauler",
-		cost: 10000,
-		crew: [],
-		modules: [],
-		speed: 6,
-		attack: 3,
-		armor: 5,
-		damage: 0,
-		objective: "If you have at least 1 Cargo, complete a job.",
-		objectiveAchieved: false,
-		constraint: {
-			base: {
-				[ShipModuleType.Modification]: 0,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 1,
-				[ShipModuleType.Crew]: 3,
-			},
-			advanced: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 2,
-				[ShipModuleType.Mix]: 0,
-				[ShipModuleType.Crew]: 3,
-			},
-		},
-		ability: {
-			description: "Gain +1 [[Speed]] for each Job you have",
-			modifier: {
-				character: {
-					attack: 0,
-					armor: 0,
-					reputation: undefined,
-				},
-				ship: {
-					attack: 0,
-					armor: 0,
-					speed: 0,
-				},
-			},
-			name: "Secret Mission",
-		},
-	},
-	ship_8: {
-		id: "ship_8",
-		name: "YT-1300 modded Light Freighter",
-		cost: 20000,
-		crew: [],
-		modules: [],
-		speed: 7,
-		attack: 4,
-		armor: 5,
-		damage: 0,
-		objective:
-			'If you have 2 mods or 1 mod and the "Chewbacca" crew, deliver 1 cargo.',
-		objectiveAchieved: false,
-		constraint: {
-			base: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 1,
-				[ShipModuleType.Crew]: 3,
-			},
-			advanced: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 1,
-				[ShipModuleType.Crew]: 3,
-			},
-		},
-		ability: {
-			description:
-				"When you roll a die to deliver a <b>Illegal</b> cargo, you can switch a [[Focus]] or [[Critical]] to [[Hit]]",
-			modifier: {
-				character: {
-					attack: 0,
-					armor: 0,
-					reputation: undefined,
-				},
-				ship: {
-					attack: 1,
-					armor: 0,
-					speed: 0,
-				},
-			},
-			name: "Special Modifications",
-		},
-	},
-	ship_9: {
-		id: "ship_9",
-		name: "Lancer pursuing ship",
-		cost: 10000,
-		crew: [],
-		modules: [],
-		speed: 6,
-		attack: 4,
-		armor: 5,
-		damage: 0,
-		objective: "Deliver a Contact from your Bounties",
-		objectiveAchieved: false,
-		constraint: {
-			base: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 0,
-				[ShipModuleType.Crew]: 2,
-			},
-			advanced: {
-				[ShipModuleType.Modification]: 1,
-				[ShipModuleType.Cargo]: 1,
-				[ShipModuleType.Mix]: 0,
-				[ShipModuleType.Crew]: 3,
-			},
-		},
-		ability: {
-			description:
-				"When other player moves to your space, you can make them to stop the movement.",
-			modifier: {
-				character: {
-					attack: 0,
-					armor: 0,
-					reputation: undefined,
-				},
-				ship: {
-					attack: 0,
-					armor: 0,
-					speed: 0,
-				},
-			},
-			name: "Tractor Beam",
-		},
-	},
-  ship_10: {
-    id: "ship_10",
-    name: "YV-666 Light Freighter",
-    cost: 15000,
-    crew: [],
-    modules: [],
-    speed: 7,
-    attack: 3,
-    armor: 5,
-    damage: 0,
-    objective: "When you recover at least 1 damage from this ship, spend [[Credits]] 7000.",
-    objectiveAchieved: false,
-    constraint: {
-      base: {
-        [ShipModuleType.Modification]: 0,
-        [ShipModuleType.Cargo]: 2,
-        [ShipModuleType.Mix]: 1,
-        [ShipModuleType.Crew]: 3
-      },
-      advanced: {
-        [ShipModuleType.Modification]: 0,
-        [ShipModuleType.Cargo]: 2,
-        [ShipModuleType.Mix]: 1,
-        [ShipModuleType.Crew]: 3
-      }
-    },
-    ability: {
-      description: "When you are going to be defeated during a ship combat, roll a die. On a [[Focus]] or [[Hit]] you recover 2 ship damage instead.",
-      modifier: {
-        character: {
-          attack: 0,
-          armor: 0,
-          reputation: undefined
-        },
-        ship: {
-          attack: 1,
-          armor: 0,
-          speed: 0
-        }
-      },
-      name: "Nashtah Pup"
-    }
-  }
+	[Module.Unfinished]: {},
 };
 
 export const CHARACTERS: Record<Module, Record<string, Character>> = {
