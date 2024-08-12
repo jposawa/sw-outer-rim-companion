@@ -8,6 +8,7 @@ export enum Faction {
 export enum ShipModuleType {
 	Modification = "Modification",
 	Cargo = "Cargo",
+  Crew = "Crew",
 	Mix = "Cargo/Modification",
 }
 

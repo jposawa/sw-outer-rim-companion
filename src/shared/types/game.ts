@@ -55,6 +55,7 @@ export type Modifier = {
 	character: {
 		attack: number;
 		armor: number;
+    reputation?: Record<Faction, number> | "choose";
 	};
 	ship: {
 		attack: number;
@@ -87,8 +88,10 @@ export type Ship = {
 	speed: number;
 	attack: number;
 	armor: number;
+  damage: number;
+	objective: string;
 	objectiveAchieved: boolean;
-	objective?: string;
+  constraint: Record<ShipModuleType, number>;
 	ability?: Ability[];
 };
 
@@ -99,16 +102,17 @@ export type Character = {
 	missions: Array<Job | Bounty>[];
 	attack: number;
 	armor: number;
+  damage: number;
 	fame: number;
 	reputation: Record<Faction, number>;
 	credits: number;
 	objective: string;
 	baseAbility: Ability;
 	objectiveAchieved: boolean;
-	ship: Ship;
 	skills: Skill[];
 	advancedAbility: Ability;
 	initialAbility?: Ability;
+	ship?: Ship;
 };
 
 export type CardStep = {
