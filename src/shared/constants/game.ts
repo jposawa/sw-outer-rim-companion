@@ -5,10 +5,15 @@ export enum Faction {
 	Hutt = "Hutt_Cartel",
 }
 
+export enum Module {
+	Core = "Core",
+	Unfinished = "Unfinished_Business",
+}
+
 export enum ShipModuleType {
 	Modification = "Modification",
 	Cargo = "Cargo",
-  Crew = "Crew",
+	Crew = "Crew",
 	Mix = "Cargo/Modification",
 }
 
